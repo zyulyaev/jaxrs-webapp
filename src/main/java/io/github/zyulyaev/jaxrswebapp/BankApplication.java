@@ -30,6 +30,7 @@ public class BankApplication extends Application {
 
     public static void main(String[] args) {
         UndertowJaxrsServer server = new UndertowJaxrsServer();
+        Runtime.getRuntime().addShutdownHook(new Thread(server::stop));
         // listens at 8081 by default
         // can be overridden by RESTEASY_PORT env value or org.jboss.resteasy.port system property
         // see org.jboss.resteasy.util.PortProvider
